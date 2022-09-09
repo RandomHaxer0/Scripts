@@ -1,0 +1,25 @@
+--// Micheal Zombies Kill Aura by UseLessPerson on YT don't be a skid and showcase this on you're YT without atleast crediting me ty :) \\--
+
+getgenv().KillAura = true -- true or false, if the script is gonna work.
+getgenv().Range = 15 -- how far the kill aura is gonna hit the zombies.
+
+local lp = game.Players.LocalPlayer
+while getgenv().KillAura do wait(0.1)
+    
+    pcall(function()
+    
+        for i,v in pairs(game:GetService("Workspace").Ignore.Zombies:GetDescendants()) do
+        
+            if v.Name == "Humanoid" then
+                if (lp.Character and lp.Character:FindFirstChild("Head") and v.Parent:FindFirstChild("Head")) then
+                    local mag = (v.Parent.Head.Position - lp.Character.Head.Position).Magnitude
+                    if mag < getgenv().Range then       
+                        game:GetService("ReplicatedStorage").Framework.Remotes.KnifeHitbox:FireServer(v)
+                    end
+                end
+            end
+        end
+    
+    end)
+    
+end
