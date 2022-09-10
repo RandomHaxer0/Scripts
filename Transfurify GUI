@@ -1,0 +1,928 @@
+--// Transfurify GUI by Useless Person on YT. Don't showcase my script without crediting me ty :) \\--
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+pcall(function()
+    
+    spawn(function()
+        local newmsg1 = Instance.new("Message",workspace)
+        newmsg1.Text = "I updated the script but its still ass"
+        task.wait(5)
+        newmsg1:Destroy()
+    end)    
+        
+    if game.ReplicatedStorage:FindFirstChild("antifaginfect") then
+        game.ReplicatedStorage:FindFirstChild("antifaginfect").Parent = workspace
+    end
+    
+for i,v in pairs(workspace:GetDescendants()) do
+    if v.Name == "Highlight" or v.Name == "Highlight2" or v.Name == "Chammed" or v.Name == "Chammed2" then
+        v:Destroy()
+    end
+end    
+    
+if not workspace:FindFirstChild("antifaginfect") then
+    
+local antifagfolder = Instance.new("Folder",workspace)
+antifagfolder.Name = "antifaginfect"
+for i,v in pairs(game:GetService("Workspace").Scripted.TransformBrick:GetChildren()) do
+    v.Parent = antifagfolder
+end
+
+for s,v in pairs(game:GetService("Workspace").Scripted.TransformArea:GetChildren()) do
+    v.Parent = antifagfolder
+end
+
+for g,v in pairs(game:GetService("Workspace").Scripted.TransformSpecial:GetChildren()) do
+    v.Parent = antifagfolder
+end
+
+for r,v in pairs(game:GetService("Workspace").Scripted.KillBarrier:GetChildren()) do
+    v.Parent = antifagfolder
+end
+
+end
+end)
+
+local antifagfolder1 = workspace:FindFirstChild("antifaginfect")
+
+--- global value disablers
+
+pcall(function()
+    _G.verifyinguntilgun = false
+    _G.verifyinguntilsledge = false
+    _G.verifyinguntilbat = false
+end)
+
+local W1 = OrionLib:MakeWindow({Name = "Transfurify Fucker", HidePremium = false, SaveConfig = false, ConfigFolder = "Transfurify Fucker"})
+
+OrionLib:MakeNotification({
+    Name = "Furry Infection Fucker",
+    Content = "UseLess Person#7247",
+    Image = "rbxassetid://6890648157", --- rbxassetid://4483345998
+    Time = 5
+})
+
+function notify(name,text)
+    OrionLib:MakeNotification({
+    Name = name,
+    Content = text,
+    Image = "rbxassetid://6890648157", --- rbxassetid://4483345998
+    Time = 5
+})
+
+end
+
+local Toggles = W1:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://6890648157", --- rbxassetid://4483345998
+    PremiumOnly = false
+})
+
+local Grabbers = W1:MakeTab({
+    Name = "Grabbers",
+    Icon = "rbxassetid://6890648157", --- rbxassetid://4483345998
+    PremiumOnly = false
+})
+
+local Modders = W1:MakeTab({
+    Name = "Modders",
+    Icon = "rbxassetid://6890648157", --- rbxassetid://4483345998
+    PremiumOnly = false
+})
+
+local Misc = W1:MakeTab({
+    Name = "Misc",
+    Icon = "rbxassetid://6890648157", --- rbxassetid://4483345998
+    PremiumOnly = false
+})
+
+Toggles:AddToggle({
+    Name = "Anti-Infect",
+    Default = false,
+    Callback = function(fagjuice1)
+        spawn(function()
+            if fagjuice1 then
+                antifagfolder1.Parent = game:GetService("ReplicatedStorage")
+                notify("Transfurify Fucker","Anti-Infect On")
+            else
+                antifagfolder1.Parent = workspace
+                notify("Transfurify Fucker","Anti-Infect Off")
+            end
+        end)
+    end
+})
+
+Toggles:AddToggle({
+    Name = "AutoHideNameTag",
+    Default = false,
+    Callback = function(ahidename)
+        spawn(function()
+            if ahidename then
+                _G.autohidename = true
+                notify("Transfurify Fucker","AutoHideNameTag On")
+            else
+                _G.autohidename = false
+                notify("Transfurify Fucker","AutoHideNameTag Off")
+            end
+            
+        while _G.autohidename do task.wait(0.2)
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.Character.Head:FindFirstChild("NameTag") then
+                    game:GetService("Players").LocalPlayer.Character.Head:FindFirstChild("NameTag"):Destroy()
+                end
+            end)    
+        end    
+        end)
+    end
+})
+
+Toggles:AddButton({
+	Name = "HideNameTag",
+	Callback = function()
+	    pcall(function()
+            if game:GetService("Players").LocalPlayer.Character.Head:FindFirstChild("NameTag") then
+                game:GetService("Players").LocalPlayer.Character.Head:FindFirstChild("NameTag"):Destroy()
+            else
+                notify("Transfurify Fucker","Your nametag is allready hidden")
+            end    
+        end)        
+    end
+})
+
+Toggles:AddToggle({
+	Name = "NoJumpCoolDown",
+	Default = false,
+	Callback = function(nojumpcd)
+	    spawn(function()
+	    pcall(function()
+	        if nojumpcd then
+	            _G.nojumpcooldown = true
+	            notify("Transfurify Fucker","NoJumpCoolDown On")
+	        else
+	            _G.nojumpcooldown = false
+	            notify("Transfurify Fucker","NoJumpCoolDown Off")
+	            task.wait(0.3)
+	            if game:GetService("Players").LocalPlayer.Character:FindFirstChild("JumpCooldown") then
+                    game:GetService("Players").LocalPlayer.Character:FindFirstChild("JumpCooldown").Disabled = false
+                end   
+	        end
+	    while _G.nojumpcooldown do task.wait(0.2)
+	        pcall(function()
+            if game:GetService("Players").LocalPlayer.Character:FindFirstChild("JumpCooldown") then
+                game:GetService("Players").LocalPlayer.Character:FindFirstChild("JumpCooldown").Disabled = true
+            end   
+            end)
+        end       
+	    end)
+    end)
+end
+})
+
+Grabbers:AddButton({
+	Name = "Gun",
+	Callback = function()
+	    pcall(function()
+	   	 if _G.allreadygrabbing then
+	        notify("Transfurify Fucker","Allready grabbing ".._G.grabbingitem.."!")
+	    else        
+	   if _G.verifyinguntilgun then
+                notify("Transfurify Fucker","Gun is not spawned, we will let you know when it is spawned!")  
+        else    
+            if game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Five-SeveN") then
+                
+                        
+                task.wait()
+                local oldpos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Scripted.Interactable["Five-SeveN"].BasePart.Position)
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 0
+                _G.allreadygrabbing = true
+                _G.grabbingitem = "Gun"
+                task.wait(0.3)
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 0
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = true
+                repeat task.wait()
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 0
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game:GetService("Workspace").Scripted.Interactable["Five-SeveN"].BasePart.Position)    
+                fireproximityprompt(game:GetService("Workspace").Scripted.Interactable["Five-SeveN"].BasePart.Attachment.GiveItem)
+                until not game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Five-SeveN") or wait(1)
+                if game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Five-SeveN") then
+                    notify("Transfurify Fucker","Failed to grab Gun (this may be bullshit! or inventory is full)")
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos+Vector3.new(0,2,0))
+                else    
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Five-SeveN") then
+                    notify("Transfurify Fucker","Grabbed Gun")
+                end    
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos+Vector3.new(0,2,0))
+                end
+                
+            
+            elseif not game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Five-SeveN") then
+                _G.verifyinguntilgun = true
+                notify("Transfurify Fucker","Gun is not spawned, we will let you know when it is spawned!")
+                    while _G.verifyinguntilgun do task.wait(0.2)
+                        pcall(function()
+                            if game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Five-SeveN") then
+                                _G.verifyinguntilgun = false
+                               notify("Transfurify Fucker","Gun is spawned!")
+                                    local audio = Instance.new("Sound",workspace)
+                                    audio.SoundId = "rbxassetid://5568992074"
+                                    audio.Volume = 10
+                                    audio:Play()
+                                    task.wait(3)
+                                    audio:Destroy() 
+                            end
+                        end)
+                    end
+              
+            end  
+	   end
+	   	 end
+
+                _G.allreadygrabbing = false
+                _G.grabbingitem = nil
+            
+                
+	    end) 
+  end
+})
+
+Modders:AddButton({
+	Name = "Mod Gun(s)",
+	Callback = function()
+    pcall(function()
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if v:IsA("Tool") then
+            v.Parent = game.Players.LocalPlayer.Backpack
+        else
+        end
+    end
+    task.wait()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+        if v:IsA("Tool") and string.match(string.lower(v.Name),"five") then 
+                local req = require(v.Setting)
+                for i,v in next, req do
+                    req.Auto = true
+                    req.ReloadSoundDelay = 0
+                    req.ReloadTime = 0
+                    req.Spread = 0
+                    req.Range = 999
+                    req.MaxAmmo = 99999
+                    req.Firerate = 0
+                    req.MultipleBullet = 25
+                end
+        end
+    end
+    end)
+    end
+})
+
+Toggles:AddToggle({
+	Name = "Anti-Grab",
+	Default = false,
+	Callback = function(agrab)
+	    spawn(function()
+	        if agrab then
+	            _G.antigrab = true
+	            notify("Transfurify Fucker","Anti-Grab On")
+	        else
+	            _G.antigrab = false
+	            notify("Transfurify Fucker","Anti-Grab Off")
+	        end 
+
+    while _G.antigrab do task.wait()
+        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("SpaceToRelease") then
+            game:GetService("Players").LocalPlayer.PlayerGui.SpaceToRelease.RemoteEvent:FireServer()
+        end
+	end
+end)
+end
+
+})
+
+Toggles:AddToggle({
+	Name = "KillAura",
+	Default = false,
+	Callback = function(kaura)
+	    spawn(function()
+	    if kaura then
+	        _G.killaura = true
+	        notify("Transfurify Fucker","KillAura On")
+	    else
+	        _G.killaura = false
+	        notify("Transfurify Fucker","KillAura Off")
+	    end 
+	    
+while _G.killaura do wait(0.1)
+    pcall(function()
+    for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+        local character = v.Character
+        if character:FindFirstChild("Humanoid").Health > 0 then
+        if character:FindFirstChild("Transformed") then    
+        game:GetService("ReplicatedStorage").Remote.Weapon.Use:FireServer(character["HumanoidRootPart"])
+        end
+        end
+    end
+end)
+end
+end)
+end
+
+})
+
+Toggles:AddToggle({
+	Name = "FurryEsp",
+	Default = false,
+	Callback = function(fesp)
+    spawn(function()
+
+        
+        if fesp then
+            _G.furryesp = true
+            notify("Transfurify Fucker","FurryEsp On")
+        else
+            _G.furryesp = false
+            task.wait(0.2)
+            pcall(function()
+            for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+                if v.Character:FindFirstChild("Chammed") then
+                    v.Character:FindFirstChild("Chammed"):Destroy()
+                    v.Character:FindFirstChild("Highlight"):Destroy()
+                end
+            end
+            end)
+            notify("Transfurify Fucker","FurryEsp Off")
+        end
+
+while _G.furryesp do task.wait(0.2)
+    pcall(function()
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+    if v ~= game.Players.LocalPlayer then
+        
+    if v.Character:FindFirstChild("Chammed") or v.Character:FindFirstChild("Highlight") then
+    if v.Character:FindFirstChild("Transformed") then
+    
+    else
+    if v.Character:FindFirstChild("Chammed") then
+        v.Character:FindFirstChild("Chammed"):Destroy()
+    end
+    if v.Character:FindFirstChild("Highlight") then
+        v.Character:FindFirstChild("Highlight"):Destroy()
+    end
+    end
+    else    
+    if v.Character:FindFirstChild("Transformed") then
+        local mode = Instance.new("Model",v.Character)
+        mode.Name = "Chammed"
+        local r = Instance.new("Highlight",v.Character)
+        r.OutlineColor = Color3.new(0,0,0)
+    end
+    end
+end
+end
+end)
+end
+end)
+end
+
+})
+
+Toggles:AddToggle({
+	Name = "SurvivorEsp",
+	Default = false,
+	Callback = function(sesp)
+    spawn(function()
+
+        if sesp then
+            _G.survivoresp = true
+            notify("Transfurify Fucker","SurvivorEsp On")
+        else
+            _G.survivoresp = false
+            task.wait(0.2)
+            pcall(function()
+            for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+                if v.Character:FindFirstChild("Chammed2") then
+                    v.Character:FindFirstChild("Chammed2"):Destroy()
+                    v.Character:FindFirstChild("Highlight2"):Destroy()
+                end
+            end
+            end)
+            notify("Transfurify Fucker","SurvivorEsp Off")
+        end
+
+while _G.survivoresp do task.wait(0.2)
+    pcall(function()
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+    if v ~= game.Players.LocalPlayer then
+        
+    if v.Character:FindFirstChild("Chammed2") or v.Character:FindFirstChild("Highlight2") then
+    if v.Character:FindFirstChild("Transformed") then
+    if v.Character:FindFirstChild("Chammed2") then
+        v.Character:FindFirstChild("Chammed2"):Destroy()
+    end
+    if v.Character:FindFirstChild("Highlight2") then
+        v.Character:FindFirstChild("Highlight2"):Destroy()
+    end
+    end    
+    else    
+    if v.Character:FindFirstChild("Transformed") then
+        
+    else    
+        local mode = Instance.new("Model",v.Character)
+        mode.Name = "Chammed2"
+        local h = Instance.new("Highlight",v.Character)
+        h.Name = "Highlight2"
+        h.FillColor = Color3.new(0,102,204)
+        h.OutlineColor = Color3.new(0,0,0)
+    end
+    end
+end
+end
+end)
+end
+end)
+end
+
+})
+
+Toggles:AddToggle({
+	Name = "FurryAimbot",
+	Default = false,
+	Callback = function(faimbot)
+    spawn(function()
+        if faimbot then
+            _G.furryaimbot = true
+            --_G.CircleTransparency = 1
+            notify("Transfurify Fucker","FurryAimbot On")
+        else
+            _G.furryaimbot = false
+            --_G.CircleTransparency = 0
+            notify("Transfurify Fucker","FurryAimbot Off")
+        end
+        end)
+
+
+end    
+
+})
+
+    spawn(function()
+    pcall(function()
+        -- NOT MY SCRIPT
+local Area = game:GetService("Workspace")
+local RunService = game:GetService("RunService")
+local UIS = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local MyCharacter = LocalPlayer.Character
+local MyRoot = MyCharacter:FindFirstChild("HumanoidRootPart")
+local MyHumanoid = MyCharacter:FindFirstChild("Humanoid")
+local Mouse = LocalPlayer:GetMouse()
+local MyView = Area.CurrentCamera
+local MyTeamColor = LocalPlayer.TeamColor
+local HoldingM2 = false
+local Active = false
+local Lock = false
+local Epitaph = 0 -- preditct
+local HeadOffset = Vector3.new(0, .1, 0)
+
+_G.Sensitivity = 1.1
+_G.CircleSides = 64
+_G.CircleColor = Color3.fromRGB(255, 0, 130)
+_G.CircleTransparency = 0
+_G.CircleRadius = 350
+_G.CircleFilled = false
+_G.CircleVisible = true
+_G.CircleThickness = 1
+
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Position = Vector2.new(MyView.ViewportSize.X / 2, MyView.ViewportSize.Y / 2)
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Filled = _G.CircleFilled
+FOVCircle.Color = _G.CircleColor
+FOVCircle.Visible = _G.CircleVisible
+FOVCircle.Transparency = _G.CircleTransparency
+FOVCircle.NumSides = _G.CircleSides
+FOVCircle.Thickness = _G.CircleThickness
+
+local function CursorLock()
+
+	UIS.MouseBehavior = Enum.MouseBehavior.LockCenter
+	
+end
+local function UnLockCursor()
+
+	HoldingM2 = false Active = false Lock = false 
+	UIS.MouseBehavior = Enum.MouseBehavior.Default
+
+end
+function FindNearestPlayer()
+
+	local dist = math.huge
+	local Target = nil
+	for _, v in pairs(Players:GetPlayers()) do
+		if v ~= LocalPlayer and v.Character:FindFirstChild("Humanoid") and v.Character:FindFirstChild("Humanoid").Health > 0 and v.Character:FindFirstChild("HumanoidRootPart") and v then
+			local TheirCharacter = v.Character
+			local CharacterRoot, Visible = MyView:WorldToViewportPoint(TheirCharacter["HumanoidRootPart"].Position)
+			if Visible then
+				local RealMag = (Vector2.new(Mouse.X, Mouse.Y) - Vector2.new(CharacterRoot.X, CharacterRoot.Y)).Magnitude
+				if RealMag < dist and RealMag < FOVCircle.Radius then
+					dist = RealMag
+					Target = TheirCharacter
+				end
+			end
+		end
+	end
+	return Target
+
+end
+
+UIS.InputBegan:Connect(function(Input)
+    if _G.furryaimbot then
+	if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+		HoldingM2 = true
+		Active = true
+		Lock = true
+		if Active then
+        	local The_Enemy = FindNearestPlayer()
+			while HoldingM2 do task.wait(.000001)
+			    pcall(function()
+				if Lock and The_Enemy ~= nil and The_Enemy.Transformed ~= nil then
+					local Future = The_Enemy.HumanoidRootPart.CFrame + (The_Enemy.HumanoidRootPart.Velocity * Epitaph + HeadOffset)
+					MyView.CFrame = CFrame.lookAt(MyView.CFrame.Position, Future.Position)
+					CursorLock()
+				end
+				end)
+			end
+		end
+	end
+	end
+end)
+
+UIS.InputEnded:Connect(function(Input)
+
+	if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+		UnLockCursor()
+	end
+	
+end)
+end)
+end)
+
+Grabbers:AddButton({
+	Name = "Sledge Hammer",
+	Callback = function()
+	    pcall(function()
+	     if _G.allreadygrabbing then
+	        notify("Transfurify Fucker","Allready grabbing ".._G.grabbingitem.."!")
+	    else   
+	       if _G.verifyinguntilsledge then
+                notify("Transfurify Fucker","Sledge Hammer is not spawned, we will let you know when it is spawned!")  
+           else
+            if game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Sledge Hammer") then
+                        
+                task.wait()
+                for i,v in pairs(game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Sledge Hammer"):GetDescendants()) do
+                    if v.Name == "GiveItem" then
+                local oldpos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Parent.Position+Vector3.new(0,4,0))
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 0
+                _G.allreadygrabbing = true
+                _G.grabbingitem = "Sledge Hammer"
+                task.wait(0.3)
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 0
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = true
+                repeat task.wait()
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 0
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Parent.Position+Vector3.new(0,4,0))    
+                fireproximityprompt(v)
+                until not v.Parent.Parent.Parent or wait(1)
+                if v.Parent.Parent.Parent then
+                    notify("Transfurify Fucker","Failed to grab Sledge Hammer (this may be bullshit! or inventory is full)")
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos+Vector3.new(0,2,0))
+                else    
+                if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Sledge Hammer") then
+                    notify("Transfurify Fucker","Grabbed Sledge Hammer")
+                end    
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos+Vector3.new(0,2,0))
+                end
+                end
+                end
+                _G.allreadygrabbing = false
+                _G.grabbingitem = nil
+                
+            
+            elseif not game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Sledge Hammer") then
+                _G.verifyinguntilsledge = true
+                notify("Transfurify Fucker","Sledge Hammer is not spawned, we will let you know when it is spawned!")
+                    while _G.verifyinguntilsledge do task.wait(0.2)
+                        pcall(function()
+                            if game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Sledge Hammer") then
+                                _G.verifyinguntilsledge = false
+                               notify("Transfurify Fucker","Sledge Hammer is spawned!")
+                                    local audio = Instance.new("Sound",workspace)
+                                    audio.SoundId = "rbxassetid://5568992074"
+                                    audio.Volume = 10
+                                    audio:Play()
+                                    task.wait(3)
+                                    audio:Destroy() 
+                            end
+                        end)
+                    end
+              
+            end
+	       end
+        end
+            
+                
+	    end) 
+  end
+})
+
+
+Modders:AddButton({
+	Name = "Mod Sledge Hammer(s)",
+	Callback = function()
+    pcall(function()
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if v:IsA("Tool") then
+            v.Parent = game.Players.LocalPlayer.Backpack
+        else
+        end
+    end
+    task.wait()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+        if v:IsA("Tool") and string.match(string.lower(v.Name),"sledge") then 
+            local req = require(v.Setting)
+
+            for i,v in next, req do
+                req.MaxHit = math.huge
+                req.PrepareTime = 0
+                req.Cooldown = 0
+            end
+        end
+    end
+    end)
+    end
+})
+
+Modders:AddButton({
+	Name = "Mod Bat(s)",
+	Callback = function()
+    pcall(function()
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+        if v:IsA("Tool") then
+            v.Parent = game.Players.LocalPlayer.Backpack
+        else
+        end
+    end
+    task.wait()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+        if v:IsA("Tool") and string.match(string.lower(v.Name),"bat") then 
+            local req = require(v.Setting)
+
+            for i,v in next, req do
+                req.MaxHit = math.huge
+                req.PrepareTime = 0
+                req.Cooldown = 0
+            end
+        end
+    end
+    end)
+    end
+})
+
+Grabbers:AddButton({
+	Name = "Bat",
+	Callback = function()
+	    pcall(function()
+	    if _G.allreadygrabbing then
+	        notify("Transfurify Fucker","Allready grabbing ".._G.grabbingitem.."!")
+	    else     
+	       if _G.verifyinguntilbat then
+                notify("Transfurify Fucker","Bat is not spawned, we will let you know when it is spawned!")  
+           else
+            if game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Bat") then
+                        
+                task.wait()
+                for i,v in pairs(game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Bat"):GetDescendants()) do
+                    if v.Name == "GiveItem" then
+                local oldpos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Parent.Position+Vector3.new(0,4,0))
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 0
+                _G.allreadygrabbing = true
+                _G.grabbingitem = "Bat"
+                task.wait(0.3)
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 0
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = true
+                repeat task.wait()
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 0
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Parent.Parent.Position+Vector3.new(0,4,0))    
+                fireproximityprompt(v)
+                until not v.Parent.Parent.Parent or wait(1)
+                if v.Parent.Parent.Parent then
+                    notify("Transfurify Fucker","Failed to grab Bat (this may be bullshit! or inventory is full)")
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos+Vector3.new(0,2,0))
+                else    
+                if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Bat") then
+                    notify("Transfurify Fucker","Grabbed Bat")
+                end    
+                game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos+Vector3.new(0,2,0))
+                end
+                end
+                end
+                _G.allreadygrabbing = false
+                _G.grabbingitem = nil
+            
+            elseif not game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Bat") then
+                _G.verifyinguntilbat = true
+                notify("Transfurify Fucker","Bat is not spawned, we will let you know when it is spawned!")
+                    while _G.verifyinguntilbat do task.wait(0.2)
+                        pcall(function()
+                            if game:GetService("Workspace").Scripted.Interactable:FindFirstChild("Bat") then
+                                _G.verifyinguntilbat = false
+                               notify("Transfurify Fucker","Bat is spawned!")
+                                    local audio = Instance.new("Sound",workspace)
+                                    audio.SoundId = "rbxassetid://5568992074"
+                                    audio.Volume = 10
+                                    audio:Play()
+                                    task.wait(3)
+                                    audio:Destroy() 
+                            end
+                        end)
+                    end
+              
+            end
+	       end
+        end
+            
+                
+	    end) 
+  end
+})
+
+Misc:AddButton({
+	Name = "Get lab coat",
+	Callback = function()
+    pcall(function()
+    if not _G.allreadygettinglabcoat then
+    oldpos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-71.0296, 3.25, -453.509)
+    task.wait(0.2)
+    for i,v in pairs(game:GetService("Workspace").Scripted.Other:GetDescendants()) do
+        if v.Name == "DoorInteract" then
+            fireproximityprompt(v,2,false)
+        end
+    end 
+    task.wait(0.2)
+    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos)
+    else
+        notify("Transfurify Fucker","Allready getting a coat!")
+    end
+    end)
+    end
+})
+
+Misc:AddButton({
+	Name = "NoHead",
+	Callback = function()
+    pcall(function()
+    if game.Players.LocalPlayer.Character:FindFirstChild("Head") then
+    oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(155.466, 29, -585.315)
+    task.wait()
+    game:GetService("ReplicatedStorage").Remote.Welding:FireServer(false, {game:GetService("Players").LocalPlayer.Character.Torso["Neck"]})
+    game.Players.LocalPlayer.Character.Head.CanCollide = false
+    repeat task.wait() game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true until not game.Players.LocalPlayer.Character:FindFirstChild("Head")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos)
+    else
+        notify("Transfurify Fucker","Your head is allready gone!")
+    end    
+    end)
+	end
+})
+
+Misc:AddToggle({
+	Name = "AutoNoHead",
+	Default = false,
+	Callback = function(anohead)
+	    spawn(function()
+	        if anohead then
+	            _G.autonohead = true
+	            notify("Transfurify Fucker","AutoNoHead On")
+	        else
+	            _G.autonohead = false
+	            notify("Transfurify Fucker","AutoNoHead Off")
+	        end
+	    while _G.autonohead do task.wait(0.1)     
+    pcall(function()
+    if game.Players.LocalPlayer.Character:FindFirstChild("Head") then
+    oldpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(155.466, 29, -585.315)
+    task.wait()
+    game:GetService("ReplicatedStorage").Remote.Welding:FireServer(false, {game:GetService("Players").LocalPlayer.Character.Torso["Neck"]})
+    game.Players.LocalPlayer.Character.Head.CanCollide = false
+    repeat task.wait() game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true until not game.Players.LocalPlayer.Character:FindFirstChild("Head")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(oldpos)
+    end 
+    end)
+    end
+	end)
+end
+})
+
+Misc:AddButton({
+	Name = "NoLegs",
+	Callback = function()
+    pcall(function()
+    if game.Players.LocalPlayer.Character:FindFirstChild("Left Leg") or game.Players.LocalPlayer.Character:FindFirstChild("Right Leg") then
+        game:GetService("ReplicatedStorage").Remote.Welding:FireServer(false, {game:GetService("Players").LocalPlayer.Character.Torso["Right Hip"],game:GetService("Players").LocalPlayer.Character.Torso["Left Hip"]})
+        game.Players.LocalPlayer.Character.Humanoid.HipHeight = 0.2
+    else
+        notify("Transfurify Fucker","Your legs are allready gone!")
+    end    
+    end)
+	end
+})
+
+Misc:AddToggle({
+	Name = "AutoNoLegs",
+	Default = false,
+	Callback = function(anolegs)
+	    spawn(function()
+	        if anolegs then
+	            _G.autonolegs = true
+	            notify("Transfurify Fucker","AutoNoLegs On")
+	        else
+	            _G.autonolegs = false
+	            notify("Transfurify Fucker","AutoNoLegs Off")
+	        end
+	    while _G.autonolegs do task.wait(0.1)     
+    pcall(function()
+        if game.Players.LocalPlayer.Character:FindFirstChild("Left Leg") or game.Players.LocalPlayer.Character:FindFirstChild("Right Leg") then
+        game:GetService("ReplicatedStorage").Remote.Welding:FireServer(false, {game:GetService("Players").LocalPlayer.Character.Torso["Right Hip"],game:GetService("Players").LocalPlayer.Character.Torso["Left Hip"]})
+        game.Players.LocalPlayer.Character.Humanoid.HipHeight = 0.2
+    end    
+    end)
+    end
+	end)
+end
+})
+Misc:AddToggle({
+	Name = "KillSay",
+	Default = false,
+	Callback = function(ksay)
+	    spawn(function()
+	        if ksay then
+	            _G.killsay = true
+	            notify("Transfurify Fucker","KillSay On")
+	        else
+	            _G.killsay = false
+	            notify("Transfurify Fucker","KillSay Off")
+	        end
+ 
+local Value = game:GetService("Players").LocalPlayer.leaderstats["Kill Count"]
+local thing
+thing = Value.Changed:Connect(function()
+if _G.killsay then
+local killsaywords = {
+    "🤓🤓🤓Imagine dying💀💀💀 to me🤣🤣🤣",
+    "💀💀💀Bro got KOed🤣🤣🤣",
+    "🤓🤓🤓Another kill🤣🤣🤣 to my kill count😃😃😃",
+    "🤣🤣🤣How do i change my difficulty🤓🤓🤓i feel like im on the child difficulty💀💀💀"
+}
+
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(killsaywords[math.random(#killsaywords)], "All")
+else
+    thing:Disconnect()
+end
+end)  
+end)
+end
+})
+
+game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(prompt)
+   prompt.HoldDuration = prompt, -1
+end)
+
+game:GetService("RunService").Heartbeat:Connect(function()
+
+    if (game:GetService("Players").LocalPlayer.Character:FindFirstChild("Anti-Tp")) then
+        game:GetService("Players").LocalPlayer.Character["Anti-Tp"]:Destroy()
+    end
+    
+end)
